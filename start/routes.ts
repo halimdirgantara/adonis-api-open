@@ -23,3 +23,24 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+// Routes for User Management
+Route.group(() => {
+  // GET /users - List all users
+  Route.get('/users', 'UsersController.index')
+
+  // GET /users/:id - Show a single user by ID
+  Route.get('/users/:id', 'UsersController.show')
+})
+
+// Routes for User Management
+Route.group(() => {
+  // POST /users - Store a new user
+  Route.post('/users', 'UsersController.store')
+
+  // PUT /users/:id - Update a user by ID
+  Route.put('/users/:id', 'UsersController.update')
+
+  // DELETE /users/:id - Delete a user by ID
+  Route.delete('/users/:id', 'UsersController.destroy')
+}).middleware('auth')
