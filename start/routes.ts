@@ -24,6 +24,8 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
+Route.post('/login', 'AuthController.login')
+
 // Routes for User Management
 Route.group(() => {
   // GET /users - List all users
@@ -31,10 +33,7 @@ Route.group(() => {
 
   // GET /users/:id - Show a single user by ID
   Route.get('/users/:id', 'UsersController.show')
-})
 
-// Routes for User Management
-Route.group(() => {
   // POST /users - Store a new user
   Route.post('/users', 'UsersController.store')
 
